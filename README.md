@@ -1,4 +1,7 @@
 # AngularJS Front-End Chat
+
+#### Latest Commit - App Status
+Structure of app with vars defined and temp data for UI build out.  
 ----
 
 I created this as a standalone chat application as it was more efficent for the initial demo build. I will eventually make this into a AngularJS module (and change the design for this purpose).
@@ -20,6 +23,3 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    - `gulp lint` - runs jslint
    - `gulp build` - compiles a build for prod
 
-
-#### Latest Commit - App Status
-Structure of app with vars defined and temp data for UI build out.
