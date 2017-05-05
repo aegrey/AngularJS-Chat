@@ -168,7 +168,7 @@ gulp.task('watch', function(callback) {
         baseDir: buildPath
         //middleware: [history({})]
       },
-      port: 9000,
+      port: 9074,
       https: false
   });
 
