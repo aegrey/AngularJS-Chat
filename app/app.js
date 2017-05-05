@@ -7,13 +7,10 @@
 (function() {
   'use strict';
 
-  //Not making chat functionality a module since it's the main app.
   //INITIATE APP & INJECTIONS
   angular
     .module('chatApp', [
-      'ui.router',
-      'ngAnimate',
-      'ngTouch'
+      'ui.router'
     ])
   .config([
     '$stateProvider',

@@ -3,10 +3,10 @@
 | Description: Prompts a user to choose a nickname before proceeding.
 | Display Requirements: No nickname set to variable user.nickname
 | -->
- <div ng-if="!user.nickname" class="entry-screen">
-  <h1>Enter a nickname</h1>
-  <input type="text" placeholder="/nick" class="text-input nickname">
-  <button class="button" ng-click="user.setNickname()">/join #general</button>
+ <div ng-if="!chat.nickname" class="entry-screen">
+  <h1>Enter a nickname to join chat</h1>
+  <input type="text" placeholder="/nick" id="nickname" class="text-input nickname">
+  <button class="button" ng-click="chat.setNickname()">Enter</button>
 </div>
 
 <!--
@@ -14,14 +14,14 @@
 | Description: Prompts a user to choose a nickname before proceeding.
 | Display Requirements: Nickname set to variable user.nickname
 | -->
-<div ng-if="chatModule.user.nickname" class="chat-module">
+<div ng-if="chat.nickname" class="chat-module">
     <header>
       <!-- Mobile first: .channel header CSS inludes hamburger to open chat list. -->
       <div class="channel-header">Channels</div>
-      <div class="channel-name">{{chatModule.activeChannel}}</div>
-      <div class="chat-logo">Chat #</div>
+      <div class="channel-name">{{chat.activeChannel}}</div>
+      <div class="chat-logo">Chat#</div>
     </header>
 
-    <channel-panel channel="{{chatModule.activeChannel}}"></channel-panel>
-    <chat-section channel="{{chatModule.activeChannel}}" nickname="{{chatModule.user.nickname}}"></chat-section>
+    <channel-panel activechannel="{{chat.activeChannel}}"></channel-panel>
+    <chat-section activechannel="{{chat.activeChannel}}" nickname="{{chat.nickname}}"></chat-section>
 </div>

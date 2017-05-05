@@ -1,5 +1,5 @@
 <section id="channelPanel">
     <ul>
-      <li ng-click="" ng-repeat="" ng-class="">{{channelName}}</li>
+      <li ng-click="changeChannel()" ng-repeat="channel in channels" ng-class="{active: channel == activeChannel}">{{channel}}</li>
     </ul>
 </section>

@@ -5,7 +5,6 @@
 | TASKS:
 | - gulp watch - starts the browser sync server
 | - gulp lint - runs jslint
-| - gulp csslint - runs csslint
 | - gulp build - compiles a build for prod
 |
 ----------------------------------------------------------------------------- */
@@ -27,14 +26,13 @@ clean          = require('gulp-clean'),
 autoprefixer   = require('gulp-autoprefixer'),
 sourcemaps     = require('gulp-sourcemaps'),
 sass           = require('gulp-sass'),
-scsslint       = require('gulp-scss-lint'),
-scssLintStyle  = require('gulp-scss-lint-stylish'),
 jshintLib      = require('jshint'),
 jshint         = require('gulp-jshint'),
 jshintStyle    = require('jshint-stylish'),
 uglify         = require('gulp-uglify'),
 ngAnnotate     = require('gulp-ng-annotate'),
-wiredep        = require('wiredep').stream;
+//wiredep        = require('wiredep').stream,
+bowerFiles     = require('main-bower-files');
 
 //---------------------------
 //CONFIG VARIABLES
@@ -79,22 +77,24 @@ gulp.task('scripts:prod', function () {
 });
 
 gulp.task('bower', function () {
-  gulp.src(indexPath)
-    .pipe(wiredep())
-    .pipe(gulp.dest(buildPath));
-
-  return gulp.src('./bower_components/**/*.*')
-    .pipe(gulp.dest(buildPath + '/bower_components'))
+  return gulp.src(bowerFiles())
+    .pipe(concat('vendors.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(buildPath + '/assets/js'))
     .on('error', gutil.log);
+
+  /* gulp.src(buildPath + '/index.html')
+    .pipe(wiredep())
+    .pipe(gulp.dest('./public/'));
+
+  return gulp.src('./bower_components/')
+    .pipe(gulp.dest(buildPath + '/bower_components'))
+    .on('error', gutil.log); */
 });
 
 //---------------------------
 // STYLE TASKS
 //---------------------------
-gulp.task('csslint', function() {
-    gulp.src(stylePath)
-        .pipe(scsslint({ customReport: scssLintStyle }));
-});
 
 gulp.task('styles:dev', function () {
   return gulp.src(stylePath)
@@ -119,7 +119,11 @@ gulp.task('styles:prod', function () {
 // VIEW TASKS
 //---------------------------
 gulp.task('views', function() {
-  return gulp.src(viewPath)
+  gulp.src('./app/index.html')
+    .pipe(gulp.dest(buildPath))
+    .on('error', gutil.log);
+
+  return gulp.src(['!app/index.html', viewPath])
     .pipe(changed(viewPath))
     .pipe(gulp.dest(buildPath + '/views'))
     .on('error', gutil.log);
@@ -156,7 +160,7 @@ gulp.task('clean', function () {
 
 gulp.task('watch', function(callback) {
   callback = callback || function() {};
-  runSequence('clean', ['bower', 'lint', 'scripts:dev', 'styles:dev', 'images', 'views', 'json'], callback);
+  runSequence('clean', ['lint', 'scripts:dev', 'styles:dev', 'images', 'views', 'json'], 'bower', callback);
 
   var server = require("browser-sync").create();
   server.init({
@@ -170,7 +174,6 @@ gulp.task('watch', function(callback) {
 
   gulp.watch(scriptPath, ['lint']);
   gulp.watch(viewPath,   ['views']).on('change', browserSync.reload);
-  gulp.watch(indexPath,  ['bower']).on('change', browserSync.reload);
   gulp.watch(scriptPath, ['scripts:dev']).on('change', browserSync.reload);
   gulp.watch(stylePath,  ['styles:dev']).on('change', browserSync.reload);
   gulp.watch(imagePath,  ['images']);
@@ -180,5 +183,5 @@ gulp.task('watch', function(callback) {
 gulp.task('build', function(callback) {
   callback = callback || function() {};
   prod = true;
-  runSequence('clean', ['bower', 'lint', 'scripts:prod', 'styles:prod', 'images', 'views', 'json'], callback);
+  runSequence('clean', ['lint', 'scripts:prod', 'styles:prod', 'images', 'views', 'json'], 'bower', callback);
 });

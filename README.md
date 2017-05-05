@@ -18,7 +18,6 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    
    - `gulp watch` - starts the browser sync server
    - `gulp lint` - runs jslint
-   - `gulp csslint` - runs csslint
    - `gulp build` - compiles a build for prod
 
 

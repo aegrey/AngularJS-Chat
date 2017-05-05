@@ -14,6 +14,13 @@
   ]);
 
   function ChatController($scope) {
+    var chat = this;
+    chat.nickname = null;
+    chat.activeChannel = '#General';
+
+    chat.setNickname = function() {
+      chat.nickname = document.getElementById('nickname').value;
+    };
 
   }
 

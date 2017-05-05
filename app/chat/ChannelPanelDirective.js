@@ -19,12 +19,22 @@
   		restrict: 'E',
       templateUrl: 'views/chat/channelPanelPartial.html',
       scope: {
-        channel: '@'
+        activechannel: '@'
       },
   		link: link
   	};
 
     function link(scope, elements, attrs) {
+
+      //temporary data
+      scope.channels = [
+        '#General',
+        '#Help'
+      ];
+
+      scope.changeChannel = function() {
+
+      };
 
     }
   }

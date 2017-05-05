@@ -19,13 +19,37 @@
   		restrict: 'E',
       templateUrl: 'views/chat/chatSectionPartial.html',
       scope: {
-        channel: '@',
+        activechannel: '@',
         nickname: '@'
       },
   		link: link
   	};
 
     function link(scope, elements, attrs) {
+
+      scope.newMessage = null;
+
+      //Temporary data
+      scope.messages = {
+        0: {
+          nickname: 'ae',
+          text: 'hello world'
+        },
+        1: {
+          nickname: 'ae',
+          text: 'hello world'
+        },
+        2: {
+          nickname: 'ae',
+          text: 'hello world'
+        }
+      };
+
+      function checkUserTyping() {
+        //Check if other user is typing
+        //Set timeout to: ?
+      }
+
 
     }
   }
