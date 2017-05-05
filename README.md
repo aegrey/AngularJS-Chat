@@ -21,5 +21,5 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    - `gulp build` - compiles a build for prod
 
 
-#### Commit 1
-Basic structure of app. Runs but no design/functionality applied yet.
+#### Latest Commit - App Status
+Structure of app with vars defined and temp data for UI build out.
