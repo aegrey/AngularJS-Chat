@@ -1,7 +1,7 @@
 # AngularJS Front-End Chat
 
 #### Latest Commit - App Status   
-Structure of app with vars defined and temp data for UI build out.  
+Structure of app with vars defined and temp data for UI build out. UI for mobile complete with the exception of channel menu. Some minor changes to design. Needs tweaking on desktop.   
    
 ---
 
