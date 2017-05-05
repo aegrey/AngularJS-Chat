@@ -1,0 +1,23 @@
+//IMPORT: Reset & Variables
+@import 'reset';
+@import 'variables';
+
+//Global Styles
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: $copy-font;
+  font-size: 100%;
+  background-color: #ffffff;
+}
+
+section, header {
+   margin: 0px auto;
+   padding: 2em;
+}
+
+//IMPORT: Section/Element Styles
+@import 'header';
+@import 'channels';
+@import 'chat';
+

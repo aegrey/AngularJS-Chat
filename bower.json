@@ -1,0 +1,27 @@
+{
+  "name": "Front-end Chat",
+  "description": "chat client",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-socket-io": "^0.7.0",
+    "angular-ui-router": "^0.3.1",
+    "angular-animate": "^1.5.8",
+    "angular-touch": "^1.5.8",
+    "angular-bootstrap": "^2.0.2",
+    "lodash": "^4.17.4"
+  },
+  "authors": [
+    "Redacted"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
