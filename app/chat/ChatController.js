@@ -15,7 +15,7 @@
 
   function ChatController($scope) {
     var chat = this;
-    chat.nickname = null;
+    chat.nickname = 'AEGrey';
     chat.activeChannel = '#General';
 
     chat.setNickname = function() {

@@ -32,15 +32,15 @@
       //Temporary data
       scope.messages = {
         0: {
-          nickname: 'ae',
+          nickname: 'LeroyJenkins',
           text: 'hello world'
         },
         1: {
-          nickname: 'ae',
+          nickname: 'AEGrey',
           text: 'hello world'
         },
         2: {
-          nickname: 'ae',
+          nickname: 'AEGrey',
           text: 'hello world'
         }
       };

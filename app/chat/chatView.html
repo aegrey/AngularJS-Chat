@@ -17,9 +17,11 @@
 <div ng-if="chat.nickname" class="chat-module">
     <header>
       <!-- Mobile first: .channel header CSS inludes hamburger to open chat list. -->
-      <div class="channel-header">Channels</div>
-      <div class="channel-name">{{chat.activeChannel}}</div>
-      <div class="chat-logo">Chat#</div>
+      <div class="channel-header">
+        Channels
+        <img src="./assets/images/hamburger.png">
+      </div>
+      <span class="channel-name">{{chat.activeChannel}}</span>
     </header>
 
     <channel-panel activechannel="{{chat.activeChannel}}"></channel-panel>
