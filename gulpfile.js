@@ -5,7 +5,7 @@
 | TASKS:
 | - gulp watch - starts the browser sync server
 | - gulp lint - runs jslint
-| - gulp csslink - runs csslint
+| - gulp csslint - runs csslint
 | - gulp build - compiles a build for prod
 |
 ----------------------------------------------------------------------------- */
