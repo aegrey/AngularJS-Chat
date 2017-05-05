@@ -1,9 +1,9 @@
 # AngularJS Front-End Chat
 
-#### Latest Commit - App Status
+#### Latest Commit - App Status   
 Structure of app with vars defined and temp data for UI build out.  
-----
-
+   
+   
 I created this as a standalone chat application as it was more efficent for the initial demo build. I will eventually make this into a AngularJS module (and change the design for this purpose).
    
    
