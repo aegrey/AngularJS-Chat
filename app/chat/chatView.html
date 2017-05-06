@@ -14,16 +14,11 @@
 | Description: Prompts a user to choose a nickname before proceeding.
 | Display Requirements: Nickname set to variable user.nickname
 | -->
-<div ng-if="chat.nickname" class="chat-module">
-    <header>
-      <!-- Mobile first: .channel header CSS inludes hamburger to open chat list. -->
-      <div class="channel-header">
-        Channels
-        <img src="./assets/images/hamburger.png">
-      </div>
-      <span class="channel-name">{{chat.activeChannel}}</span>
-    </header>
 
-    <channel-panel activechannel="{{chat.activeChannel}}"></channel-panel>
-    <chat-section activechannel="{{chat.activeChannel}}" nickname="{{chat.nickname}}"></chat-section>
-</div>
+<header ng-if="chat.nickname" id="chatHeader">
+  <span class="channel-name">{{chat.activechannel}}</span>
+</header>
+
+<channel-panel activechannel="chat.activechannel"></channel-panel>
+<chat-section activechannel="chat.activechannel" nickname="{{chat.nickname}}"></chat-section>
+

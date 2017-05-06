@@ -1,5 +1,11 @@
+<!-- Mobile first: .channel header CSS inludes hamburger to open chat list. -->
+<div ng-click="openPanel()" class="channel-header">
+  Channels
+  <img src="./assets/images/hamburger.png">
+</div>
 <section id="channelPanel">
+    <div ng-click="closePanel()" class="channel-full-header">Channels</div>
     <ul>
-      <li ng-click="changeChannel()" ng-repeat="channel in channels" ng-class="{active: channel == activeChannel}">{{channel}}</li>
+      <li ng-repeat="channel in channels" ng-click="changeChannel(channel)" ng-class="{active: channel == activechannel}">{{channel}}</li>
     </ul>
 </section>

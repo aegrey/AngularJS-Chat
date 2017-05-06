@@ -19,7 +19,7 @@
   		restrict: 'E',
       templateUrl: 'views/chat/channelPanelPartial.html',
       scope: {
-        activechannel: '@'
+        activechannel: '='
       },
   		link: link
   	};
@@ -32,9 +32,24 @@
         '#Help'
       ];
 
-      scope.changeChannel = function() {
+      scope.openPanel = openPanel;
+      scope.closePanel = closePanel;
+      scope.changeChannel = changeChannel;
 
-      };
+      //Not doing anything fancy here for now for time sake.
+      function openPanel() {
+        document.getElementById('channelPanel').style.display = "block";
+        document.getElementsByClassName('channel-name')[0].style.display = "none";
+      }
+
+      function closePanel() {
+        document.getElementById('channelPanel').style.display = "none";
+        document.getElementsByClassName('channel-name')[0].style.display = "block";
+      }
+
+      function changeChannel(channel) {
+        scope.activechannel = channel;
+      }
 
     }
   }

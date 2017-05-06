@@ -4,11 +4,20 @@ $copy-font: 'Open Sans', 'Helvetica', 'Sans-Serif';
 //Primary Colors
 $main-blue: #1ca6df;
 $main-orange: #f78f1e;
-$light-blue: #5bbae1;
+$mid-blue: #2eade2;
+$mid-orange: #f6ac5d;
+$light-blue: #5bbae6;
 $light-grey: #e5e5e5;
 
 //Text Colors
 $light-text: #ffffff;
 $grey-text: #fafafa;
-$dark-text: #222222;
+$dark-text: #343434;
 $error-text: #ff2222;
+
+//Mixins
+@mixin shadow($color) {
+  -webkit-box-shadow: -3px 0px 3px $color;
+  -moz-box-shadow: -3px 0px 3px $color;
+  box-shadow: -3px 0px 3px $color;
+}

@@ -14,6 +14,23 @@
 
   function ChatService() {
 
+    var chatServices = {
+      initLocalCache: initLocalCache,
+      addUserMessage: addUserMessage,
+      checkChatMessages: checkChatMessages
+    }
+
+    function initLocalCache() {
+
+    }
+
+    function checkChatMessages() {
+
+    }
+
+    function addLocalMessage() {
+
+    }
   }
 
 })();

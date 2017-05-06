@@ -15,12 +15,17 @@
 
   function ChatController($scope) {
     var chat = this;
-    chat.nickname = 'AEGrey';
-    chat.activeChannel = '#General';
+    chat.nickname = 'AEGrey'; //TEMP FOR TESTING
+    chat.activechannel = '#General';
+    chat.setNickname = setNickname;
 
-    chat.setNickname = function() {
+    function setNickname() {
       chat.nickname = document.getElementById('nickname').value;
-    };
+
+      //new user, setup local storage
+
+    }
+
 
   }
 

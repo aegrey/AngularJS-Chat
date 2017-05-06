@@ -1,6 +1,10 @@
 #chatView {
   width: 100%;
+  height: 100%;
+  overflow: auto;
   padding: 0.6em;
+  margin: 3em 0px 3em;
+
   h5 {
     color: $main-orange;
     font-weight: 300;
@@ -8,14 +12,18 @@
     border-bottom: 1px solid $main-orange;
     font-size: 0.7em;
     text-transform: uppercase;
-    width: 80%;
-    margin: 1em auto;
+    width: 75%;
+    margin: 1.5em auto 3.5em;
     padding-bottom: 0.5em;
   }
   ul.history-list {
+    position: relative;
+    overflow: auto;
+    bottom: 1em;
     li {
-      width: 75%;
-      margin-bottom: 1em;
+      width: 80%;
+      display: block;
+      margin-bottom: 10px;
       .username {
         color: $main-orange;
         font-weight: 700;
@@ -32,8 +40,9 @@
       }
     }
     li.userMessage {
+      position: relative;
+      margin-left: 20%;
       text-align: right;
-      float: right;
       .chat-bubble {
         background-color: $light-grey;
       }
@@ -44,28 +53,30 @@
 
 #chatField {
   position: fixed;
+  z-index: 5;
   bottom: 0px;
   width: 100%;
   background-color: $light-grey;
-  padding: 0.6em 1%;
+  padding: 0.6em 0px 0.6em 1%;
 
     input, button {
-      height: 2em;
+      height: 2.1em;
       font-family: $copy-font;
       font-size: 1em;
       border-radius: 3px;
+      display: inline-block;
     }
     input {
       font-weight: 400;
       color: $dark-text;
       border: 0px;
-      padding-left: 5px;
-      width: 81%;
+      padding-left: 6px;
+      width: 75%;
       height: 1.9em;
     }
     button {
       padding: 0px;
-      width: 15%;
+      width: 21%;
       color: $light-text;
       font-weight: 600;
       text-transform: uppercase;

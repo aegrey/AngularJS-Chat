@@ -9,10 +9,9 @@ body, html {
   font-family: $copy-font;
   font-size: 100%;
   background-color: #ffffff;
-}
-
-section, header {
-   margin: 0px auto;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 //IMPORT: Section/Element Styles
