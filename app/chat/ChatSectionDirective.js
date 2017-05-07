@@ -11,59 +11,56 @@
     .directive('chatSection', [
       '$compile',
       '$state',
+      '$timeout',
+      'ChatService',
       chatSection
     ]);
 
-  function chatSection($compile, $state) {
+  function chatSection($compile, $state, $timeout, ChatService) {
   	return {
   		restrict: 'E',
       templateUrl: 'views/chat/chatSectionPartial.html',
       scope: {
         activechannel: '=',
-        nickname: '@'
+        nickname: '@',
+        updatechannel: '=',
+        sendmessage: '='
       },
   		link: link
   	};
 
     function link(scope, elements, attrs) {
 
-      scope.newMessage = null;
+      scope.addMessage = addMessage;
+      scope.messages = [];
 
-      //Temporary data
-      scope.messages = {
-        0: {
-          nickname: 'LeroyJenkins',
-          text: 'hello world'
-        },
-        1: {
-          nickname: 'AEGrey',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed elementum massa, ut elementum felis. Maecenas justo est, feugiat nec leo vitae, malesuada fringilla ante. Morbi elementum efficitur facilisis.'
-        },
-        2: {
-          nickname: 'AEGrey2',
-          text: 'hello world'
-        },
-        3: {
-          nickname: 'AEGrey',
-          text: 'hello world'
-        },
-        4: {
-          nickname: 'AEGrey',
-          text: 'hello world'
-        },
-        5: {
-          nickname: 'AEGrey2',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed elementum massa, ut elementum felis.'
-        },
-        6: {
-          nickname: 'AEGrey',
-          text: 'hello world'
-        },
-        7: {
-          nickname: 'AEGrey4',
-          text: 'hello world'
-        }
-      };
+      watchMessages();
+      watchChannel();
+
+      function watchChannel() {
+        scope.$watch('activechannel', function(newVal, oldVal) {
+          if(newVal !== oldVal) {
+            scope.messages = [];
+            //update channel in socket
+            scope.updatechannel(newVal, oldVal);
+          }
+        });
+      }
+
+      function watchMessages() {
+        //To Do: Add Cache
+        scope.$on('socket:message_created', function(event, value) {
+          console.log(value);
+          scope.messages.push({ 'nickname': value.user.username, 'message': value.message, 'created': value.created });
+        });
+
+      }
+
+      function addMessage() {
+        scope.sendmessage(scope.newMessage);
+        scope.newMessage = '';
+      }
+
 
       function checkUserTyping() {
         //Check if other user is typing

@@ -1,7 +1,9 @@
 # AngularJS Front-End Chat
 
 #### Latest Commit - App Status   
-Structure of app with vars defined and temp data for UI build out. UI for mobile first - complete with the exception of channel menu. Some minor changes to design. Needs UI tweaking on desktop - which I will be making lower priority in favor of functionality.   
+Still need to style the user signup page. Need to add localstorage for user message storage and persistent messages. Need to debug some problems with posting to other channels than "general" (which I had to change the server for). Need to hook up the watcher in the controller for new messages to the directive.  Need to add comments/documentation.  
+   
+**NOTE** I had to change the socket.io server - will address this w/ you Monday. Also, some small errors with the readme on main repo, I can make a pull request for these.
    
 ---
 

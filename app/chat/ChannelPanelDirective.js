@@ -19,24 +19,21 @@
   		restrict: 'E',
       templateUrl: 'views/chat/channelPanelPartial.html',
       scope: {
-        activechannel: '='
+        activechannel: '=',
+        channels: '=',
       },
   		link: link
   	};
 
     function link(scope, elements, attrs) {
 
-      //temporary data
-      scope.channels = [
-        '#General',
-        '#Help'
-      ];
+      //TO DO: If channels is empty, check local cache
 
       scope.openPanel = openPanel;
       scope.closePanel = closePanel;
       scope.changeChannel = changeChannel;
 
-      //Not doing anything fancy here for now for time sake.
+      //Not doing any fancy UX here now for time sake.
       function openPanel() {
         document.getElementById('channelPanel').style.display = "block";
         document.getElementsByClassName('channel-name')[0].style.display = "none";
@@ -49,6 +46,7 @@
 
       function changeChannel(channel) {
         scope.activechannel = channel;
+        closePanel();
       }
 
     }

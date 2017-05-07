@@ -1,6 +1,6 @@
 /**
  * @ngdoc chatApp
- * @name chatApp.factory:ChatService
+ * @name chatApp.service:ChatService
  * @description Chat Module Service
 */
 
@@ -8,27 +8,38 @@
   'use strict';
 
   angular.module('chatApp')
-    .factory('ChatService', [
+    .service('ChatService', [
+      'socketFactory',
       ChatService
     ]);
 
-  function ChatService() {
+  function ChatService(socketFactory) {
 
     var chatServices = {
-      initLocalCache: initLocalCache,
-      addUserMessage: addUserMessage,
-      checkChatMessages: checkChatMessages
+      socket: socket,
+      updateChatCache: updateChatCache,
+      getCache: getCache
+    };
+
+    return chatServices;
+
+
+    //connects to socket.io server
+    function socket() {
+      //put this URL into config file in the future.
+      var socketConn = socketFactory({
+        ioSocket: io.connect('http://localhost:3000')
+      });
+
+      return socketConn;
     }
 
-    function initLocalCache() {
+    //Chat Cache Functions
+    function updateChatCache(chatObj) {
 
     }
 
-    function checkChatMessages() {
-
-    }
-
-    function addLocalMessage() {
+    function getCache() {
 
     }
   }

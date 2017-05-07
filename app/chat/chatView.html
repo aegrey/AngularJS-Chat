@@ -5,7 +5,7 @@
 | -->
  <div ng-if="!chat.nickname" class="entry-screen">
   <h1>Enter a nickname to join chat</h1>
-  <input type="text" placeholder="/nick" id="nickname" class="text-input nickname">
+  <input type="text" placeholder="/nick" id="nickname" class="text-input nickname" required>
   <button class="button" ng-click="chat.setNickname()">Enter</button>
 </div>
 
@@ -15,10 +15,12 @@
 | Display Requirements: Nickname set to variable user.nickname
 | -->
 
-<header ng-if="chat.nickname" id="chatHeader">
-  <span class="channel-name">{{chat.activechannel}}</span>
-</header>
+<div ng-if="chat.nickname">
+  <header id="chatHeader">
+    <span class="channel-name">{{chat.activechannel}}</span>
+  </header>
 
-<channel-panel activechannel="chat.activechannel"></channel-panel>
-<chat-section activechannel="chat.activechannel" nickname="{{chat.nickname}}"></chat-section>
+  <channel-panel activechannel="chat.activechannel" channels="chat.channels"></channel-panel>
+  <chat-section activechannel="chat.activechannel" nickname="{{chat.nickname}}" updatechannel="chat.updateChannel" sendmessage="chat.sendMessage"></chat-section>
+</div>
 

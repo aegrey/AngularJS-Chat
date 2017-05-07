@@ -6,6 +6,6 @@
 <section id="channelPanel">
     <div ng-click="closePanel()" class="channel-full-header">Channels</div>
     <ul>
-      <li ng-repeat="channel in channels" ng-click="changeChannel(channel)" ng-class="{active: channel == activechannel}">{{channel}}</li>
+      <li ng-repeat="channel in channels" ng-click="changeChannel(channel.label)" ng-class="{active: channel.label == activechannel}">{{channel.label}}</li>
     </ul>
 </section>

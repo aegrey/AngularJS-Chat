@@ -10,7 +10,8 @@
   //INITIATE APP & INJECTIONS
   angular
     .module('chatApp', [
-      'ui.router'
+      'ui.router',
+      'btford.socket-io'
     ])
   .config([
     '$stateProvider',

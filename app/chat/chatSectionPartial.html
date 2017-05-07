@@ -1,16 +1,16 @@
 <section id="chatView">
-    <h5 class="join">Joined Channel <span class="bold">{{activechannel}}</span></h5>
+    <h5 class="join">{{nickname}} Joined Channel <span class="bold">{{activechannel}}</span></h5>
 
-    <ul class="history-list">
+    <ul ng-if="messages.length" class="history-list">
         <li ng-repeat="message in messages" ng-class="{userMessage: message.nickname == nickname}">
           <div class="username">{{message.nickname}}</div>
-          <div class="chat-bubble">{{message.text}}</div>
+          <div class="chat-bubble">{{message.message}}</div>
         </li>
         <li class="typing" ng-show="typing">...</li>
     </ul>
 </section>
 
 <section id="chatField">
-  <input type="text" ng-model="newMessage" placeholder="enter your message...">
-  <button class="button">Send</button>
+  <input type="text" ng-model="newMessage" placeholder="enter your message..." required>
+  <button class="button" ng-click="addMessage()">Send</button>
 </section>
