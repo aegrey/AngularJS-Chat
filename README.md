@@ -1,9 +1,9 @@
 # AngularJS Front-End Chat
 
 #### Latest Commit - App Status   
-Still need to style the user signup page. Need to add localstorage for user message storage and persistent messages. Need to debug some problems with posting to other channels than "general" (which I had to change the server for). Need to hook up the watcher in the controller for new messages to the directive.  Need to add comments/documentation.  
+All required functionality is working, still need to tweak desktop UI (mobile looks well). Local storage for chat/persistant data structure but not functionality - going to store all messages by session. Socket calls for user join/left notifications setup, but not included in the UI yet. 
    
-**NOTE** I had to change the socket.io server - will address this w/ you Monday. Also, some small errors with the readme on main repo, I can make a pull request for these.
+**NOTE** I had to change the socket.io server - will address this w/ you Monday. 
    
 ---
 
@@ -30,9 +30,8 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    - `gulp build` - compiles a build for prod
    
    
-### To-Do   
+### Future To-Do   
    -  Comments/JSDoc
-   -  Real time chat hookup
    -  Local storage for channel history
    -  Tweak responsive style for desktop
    -  Add UX animations for chat, channel slide-out (using css transitions)
