@@ -6,11 +6,14 @@
           <div class="username">{{message.nickname}}</div>
           <div class="chat-bubble">{{message.message}}</div>
         </li>
-        <li class="typing" ng-show="typing">...</li>
+        <li class="typing" ng-show="typing">
+          <div class="username">{{typingNick}}</div>
+          <div class="chat-bubble">. . . </div>
+        </li>
     </ul>
 </section>
 
 <section id="chatField">
-  <input type="text" ng-model="newMessage" placeholder="enter your message..." required>
+  <input type="text" ng-model="newMessage" ng-change="userTyping()" placeholder="enter your message..." required>
   <button class="button" ng-click="addMessage()">Send</button>
 </section>

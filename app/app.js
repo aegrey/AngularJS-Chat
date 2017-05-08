@@ -11,15 +11,17 @@
   angular
     .module('chatApp', [
       'ui.router',
-      'btford.socket-io'
+      'btford.socket-io',
+      'LocalStorageModule'
     ])
   .config([
     '$stateProvider',
     '$urlRouterProvider',
+    'localStorageServiceProvider',
     Route
   ]);
 
-  function Route($stateProvider, $urlRouterProvider) {
+  function Route($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
     $stateProvider
       .state('chat', {
@@ -30,6 +32,8 @@
       });
 
     $urlRouterProvider.otherwise('/');
+
+    localStorageServiceProvider.setStorageType('sessionStorage');
   }
 
 })();

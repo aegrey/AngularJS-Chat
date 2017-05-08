@@ -39,6 +39,14 @@
         padding: 0.9em;
       }
     }
+
+    li.typing {
+      .chat-bubble {
+        width: 6em;
+        font-weight: 800;
+      }
+    }
+
     li.userMessage {
       position: relative;
       margin-left: 20%;

@@ -10,13 +10,12 @@
   angular.module('chatApp')
   .controller('ChatController', [
     '$scope',
-    '$timeout',
     'ChatService',
     ChatController
   ]);
 
 
-  function ChatController($scope, $timeout, ChatService) {
+  function ChatController($scope, ChatService) {
     var chat = this;
     chat.nickname = null;
     chat.activechannel = 'general';
@@ -30,6 +29,10 @@
     getMessages();
     initChannels();
 
+    if(document.cookie) {
+      chat.nickname = document.cookie;
+      createUser();
+    }
 
     function initChannels() {
       /** Init socket.io connection for new session */
@@ -47,11 +50,16 @@
     }
 
     function createUser() {
-      chat.nickname = document.getElementById('nickname').value;
+      if(!chat.nickname) {
+        chat.nickname = document.getElementById('nickname').value;
+      }
 
       if(chat.nickname) {
         userObj = { username : chat.nickname };
         chat.showChat = true;
+
+        /** Save username to cookie for temp storage */
+        document.cookie = chat.nickname;
 
         /** Format data based on expected vars & emit user joining */
         var userJoin = { 'channel': {'label': chat.activechannel}, 'user': { 'username': chat.nickname }};
@@ -88,7 +96,6 @@
       var messageObj = {
         channel: {
             label: chat.activechannel,
-            private: false //TODO: create a find for this
         },
         user: {
             username: chat.nickname
@@ -101,7 +108,11 @@
 
     function getMessages() {
       console.log('get message function invoked');
+      /** Watch for new messages */
       ChatService.socket.forward('message_created', $scope);
+
+      /** Watch for typing */
+      ChatService.socket.forward('typing_event', $scope);
     }
   }
 })();
