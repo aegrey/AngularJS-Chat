@@ -29,23 +29,42 @@
 
     function link(scope, elements, attrs) {
 
-      //TO DO: If channels is empty, check local cache
-
       scope.openPanel = openPanel;
       scope.closePanel = closePanel;
       scope.changeChannel = changeChannel;
 
-      //Not doing any fancy UX here now for time sake.
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:channelPanel#openPanel
+       * @methodOf chatApp.directive:channelPanel
+       * @description Opens chat panel
+       * !TO DO: Needs UX/Animation
+      */
       function openPanel() {
         document.getElementById('channelPanel').style.display = "block";
         document.getElementsByClassName('channel-name')[0].style.display = "none";
       }
 
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:channelPanel#closePanel
+       * @methodOf chatApp.directive:channelPanel
+       * @description Closes chat panel
+       * !TO DO: Needs UX/Animation
+      */
       function closePanel() {
         document.getElementById('channelPanel').style.display = "none";
         document.getElementsByClassName('channel-name')[0].style.display = "block";
       }
 
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:channelPanel#changeChannel
+       * @methodOf chatApp.directive:channelPanel
+       * @description Changes user channel
+       *
+       * @param {string} channel New channel name
+      */
       function changeChannel(channel) {
         scope.activechannel = channel;
         closePanel();

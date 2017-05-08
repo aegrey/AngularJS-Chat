@@ -100,6 +100,7 @@
      * @name chatApp.controller:ChatController#updateChannel
      * @methodOf chatApp.controller:ChatController
      * @description Changes the channel a user is in
+     *
      * @param {string} newVal New channel name
      * @param {string} oldVal Previous channel name
     */
@@ -125,6 +126,7 @@
      * @name chatApp.controller:ChatController#sendMessage
      * @methodOf chatApp.controller:ChatController
      * @description Sends a new message to the server
+     *
      * @param {string} message Message to send
     */
     function sendMessage(message) {
@@ -141,10 +143,11 @@
     }
 
     /**
-     * @ngdoc getMessages
+     * @ngdoc method
      * @name chatApp.controller:ChatController#getMessages
      * @methodOf chatApp.controller:ChatController
      * @description Message watch events
+     *
      * @param {string} message Message to send
     */
     function getMessages() {

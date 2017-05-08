@@ -50,7 +50,7 @@
      * @ngdoc method
      * @name chatApp.service:ChatService#getStorage
      * @methodOf chatApp.service:ChatService
-     * @returns {object} Cache Object
+     * @returns {object} Session Object
     */
     function getStorage(key) {
 

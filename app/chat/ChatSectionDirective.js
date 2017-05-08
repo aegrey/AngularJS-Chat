@@ -4,6 +4,11 @@
  * @restrict 'E'
  * @scope
  * @description Chat Section Directive
+ *
+ * @property {boolean} typing Determines whether user is typing a message
+ * @property {boolean} storage Determines whether storage is available
+ * @property {string} newMessage The message to send to server
+ * @property {object} messages current messages
 */
 
 (function() {
@@ -43,13 +48,20 @@
       watchMessages();
       watchChannel();
 
-
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:chatSection#watchChannel
+       * @methodOf chatApp.directive:chatSection
+       * @description
+       * - Checks local storage for messages if user has previously been in chat
+       * - Watches scope.activechannel for changes & broadcasts to controller
+      */
       function watchChannel() {
         scope.$watch('activechannel', function(newVal, oldVal) {
           if(newVal !== oldVal) {
             scope.messages = [];
 
-            //TODO: Put this in a service
+            /** TO DO: Put this in chatApp.service:ChatService#getStorage */
             var recordCount = getStorage(scope.activechannel + 'Length');
             if(recordCount > 0) {
               for (var i = 0; i < recordCount; i++) {
@@ -57,13 +69,19 @@
                 scope.messages.push(getStorage(scope.activechannel + x));
               }
             }
+            /** END chatApp.service:ChatService#getStorage */
 
-            //update channel in socket
             scope.updatechannel(newVal, oldVal);
           }
         });
       }
 
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:chatSection#watchMessages
+       * @methodOf chatApp.directive:chatSection
+       * @description Watches method post & sends to server
+      */
       function watchMessages() {
         scope.$on('socket:message_created', function(event, value) {
           var messageObj = { 'channel': scope.activechannel, 'nickname': value.user.username, 'message': value.message, 'date': value.date };
@@ -72,9 +90,10 @@
           //push message to scope
           scope.messages.push(messageObj);
 
-          //push message to storage
-          addStorage(scope.activechannel + scope.messages.length, messageObj);
-          addStorage(scope.activechannel + 'Length', scope.messages.length);
+          /** TO DO: Put this in chatApp.service:ChatService#createStorage */
+          createStorage(scope.activechannel + scope.messages.length, messageObj);
+          createStorage(scope.activechannel + 'Length', scope.messages.length);
+          /** END chatApp.service:ChatService#createStorage */
         });
 
         scope.$on('socket:typing_event', function(event, value) {
@@ -82,6 +101,7 @@
           scope.typingNick = value.user.username;
         });
       }
+
 
       function addMessage() {
         scope.sendmessage(scope.newMessage);
@@ -93,19 +113,39 @@
         ChatService.socket.emit('typing_event', data);
       }
 
-      function addStorage(key, val) {
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:chatSection#createStorage
+       * @methodOf chatApp.service:ChatService
+       * @returns {boolean} Success boolean
+       * @description creates session storage object
+       * !TO DO: Put this in chatApp.service:ChatService#createStorage
+       *
+       * @param {string} key key for storage object
+       * @param {object} val object for storage
+      */
+      function createStorage(key, val) {
         if(localStorageService.isSupported) {
           scope.storage = true;
           return localStorageService.set(key, val);
         }
       }
+      /**
+       * @ngdoc method
+       * @name chatApp.directive:chatSection#getStorage
+       * @methodOf chatApp.service:ChatService
+       * @returns {object} Session Object
+       * @description gets session storage object
+       * !TO DO: Put this in chatApp.service:ChatService#getStorage
+       *
+       * @param {string} key key for storage object
+      */
       function getStorage(key) {
         if(localStorageService.isSupported) {
           scope.storage = true;
           return localStorageService.get(key);
         }
       }
-
     }
   }
 

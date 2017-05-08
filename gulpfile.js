@@ -31,7 +31,7 @@ jshint         = require('gulp-jshint'),
 jshintStyle    = require('jshint-stylish'),
 uglify         = require('gulp-uglify'),
 ngAnnotate     = require('gulp-ng-annotate'),
-//wiredep        = require('wiredep').stream,
+gulpDocs       = require('gulp-ngdocs'),
 bowerFiles     = require('main-bower-files');
 
 //---------------------------
@@ -82,14 +82,6 @@ gulp.task('bower', function () {
     .pipe(uglify())
     .pipe(gulp.dest(buildPath + '/assets/js'))
     .on('error', gutil.log);
-
-  /* gulp.src(buildPath + '/index.html')
-    .pipe(wiredep())
-    .pipe(gulp.dest('./public/'));
-
-  return gulp.src('./bower_components/')
-    .pipe(gulp.dest(buildPath + '/bower_components'))
-    .on('error', gutil.log); */
 });
 
 //---------------------------
