@@ -1,7 +1,8 @@
 /**
- * @ngdoc chatApp
+ * @ngdoc service
  * @name chatApp.service:ChatService
  * @description Chat Module Service
+ * @requires socketFactory
 */
 
 (function() {
@@ -17,27 +18,41 @@
 
     var chatServices = {
       socket: socket(),
-      updateChatCache: updateChatCache,
-      getCache: getCache,
+      createStorage: createStorage,
+      getStorage: getStorage,
     };
 
     return chatServices;
 
-
-    //connects to socket.io server
+    /**
+     * @ngdoc method
+     * @name chatApp.service:ChatService#socket
+     * @methodOf chatApp.service:ChatService
+     * @returns {object} Socket Connection
+    */
     function socket() {
-      //put this URL into config file in the future.
       return socketFactory({
-        ioSocket: io.connect('http://localhost:3000')
+        ioSocket: io.connect('http://localhost:3000') //TO DO: put this URL into .env file.
       });
     }
 
-    //Chat Cache Functions
-    function updateChatCache(chatObj) {
+    /**
+     * @ngdoc method
+     * @name chatApp.service:ChatService#createStorage
+     * @methodOf chatApp.service:ChatService
+     * @returns {boolean} Success boolean
+    */
+    function createStorage(key, chatObj) {
 
     }
 
-    function getCache() {
+    /**
+     * @ngdoc method
+     * @name chatApp.service:ChatService#getStorage
+     * @methodOf chatApp.service:ChatService
+     * @returns {object} Cache Object
+    */
+    function getStorage(key) {
 
     }
   }

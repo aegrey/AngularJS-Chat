@@ -1,13 +1,12 @@
 /**
- * @ngdoc chachatApp
- * @name chatApp.module:chatApp
- * @description Initiating Application & Routing
+ * @ngdoc interface
+ * @name chatApp.interface:chatApp
+ * @description Initates Angular Load
 */
 
 (function() {
   'use strict';
 
-  //INITIATE APP & INJECTIONS
   angular
     .module('chatApp', [
       'ui.router',

@@ -1,6 +1,8 @@
 /**
- * @ngdoc chatApp
+ * @ngdoc directive
  * @name chatApp.directive:chatSection
+ * @restrict 'E'
+ * @scope
  * @description Chat Section Directive
 */
 

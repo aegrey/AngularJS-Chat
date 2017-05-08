@@ -1,6 +1,8 @@
 /**
- * @ngdoc chatApp
+ * @ngdoc directive
  * @name chatApp.directive:channelPanel
+ * @restrict 'E'
+ * @scope
  * @description Channel Panel Directive
 */
 
