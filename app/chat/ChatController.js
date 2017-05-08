@@ -15,36 +15,29 @@
     ChatController
   ]);
 
+
   function ChatController($scope, $timeout, ChatService) {
     var chat = this;
-    chat.nickname = 'ae';
+    chat.nickname = null;
     chat.activechannel = 'general';
-    chat.setNickname = setNickname;
+    chat.createUser = createUser;
     chat.updateChannel = updateChannel;
     chat.sendMessage = sendMessage;
+    chat.showChat = false;
     chat.channels = {};
     var userObj = {};
 
     getMessages();
-    setNickname();
+    initChannels();
 
-    function setNickname() {
-      //chat.nickname = document.getElementById('nickname').value;
-      userObj = { username : chat.nickname };
-
-      //new user, setup local storage & connect to socket.io
-      if(chat.nickname) {
-        initChannels();
-      } else {
-        alert('Please enter a nickname.');
-      }
-    }
 
     function initChannels() {
-      ChatService.socket().on('start', function(data){
-        chat.activechannel = data.channels[0].label;
+      /** Init socket.io connection for new session */
+      ChatService.socket.on('start', function(data){
+        chat.activechannel = data.defaultChannel;
         var publicChannels = _.filter(data.channels, { 'private': false });
 
+        /** Set channel object based on user privileges */
         if(data.canViewPrivate) {
           chat.channels = data.channels;
         } else {
@@ -53,17 +46,43 @@
       });
     }
 
-    function updateChannel(newVal, oldVal) {
+    function createUser() {
+      chat.nickname = document.getElementById('nickname').value;
 
-      var newChannel1 = _.find(chat.channels, [ 'label', newVal ]);
-      var oldChannel = _.find(chat.channels, [ 'label', oldVal ]);
-      var newChannel2 = { 'channel': newChannel1, 'user': userObj };
-      var changeChannel = { 'prevChannel': oldChannel, 'newChannel': newChannel1, 'user': userObj };
+      if(chat.nickname) {
+        userObj = { username : chat.nickname };
+        chat.showChat = true;
 
-      //Record Channel Change
-      //ChatService.socket().emit('user_joined', newChannel2);
-      ChatService.socket().emit('change_channel', changeChannel);
+        /** Format data based on expected vars & emit user joining */
+        var userJoin = { 'channel': {'label': chat.activechannel}, 'user': { 'username': chat.nickname }};
+        ChatService.socket.emit('user_joined', userJoin);
+
+        ChatService.socket.on('user_joined', function(data) {
+          //TO DO: Send 'user joined' message to relevant chat.
+        });
+      } else {
+        alert('Please enter a nickname.');
+      }
     }
+
+
+    function updateChannel(newVal, oldVal) {
+      var newChannel = _.find(chat.channels, [ 'label', newVal ]);
+      var oldChannel = _.find(chat.channels, [ 'label', oldVal ]);
+      var changeChannel = { 'prevChannel': oldChannel, 'newChannel': newChannel, 'user': userObj };
+
+      /** Emit channel change */
+      ChatService.socket.emit('change_channel', changeChannel);
+
+      ChatService.socket.on('user_left', function(data) {
+        //TO DO: Send 'user left' message to relevant chat.
+      });
+
+      ChatService.socket.on('user_joined', function(data) {
+        //TO DO: Send 'user joined' message to relevant chat.
+      });
+    }
+
 
     function sendMessage(message) {
       var messageObj = {
@@ -76,17 +95,13 @@
         },
         message: message
       };
-      ChatService.socket().emit('new_message', messageObj, function(data) {
-        console.log(data);
-      });
+      ChatService.socket.emit('new_message', messageObj);
     }
+
 
     function getMessages() {
-      ChatService.socket().forward('message_created', $scope);
-      $scope.$on('socket:message_created', function(event, value) {
-        console.log(value);
-      });
+      console.log('get message function invoked');
+      ChatService.socket.forward('message_created', $scope);
     }
   }
-
 })();

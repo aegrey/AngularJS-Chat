@@ -3,10 +3,12 @@
 | Description: Prompts a user to choose a nickname before proceeding.
 | Display Requirements: No nickname set to variable user.nickname
 | -->
- <div ng-if="!chat.nickname" class="entry-screen">
-  <h1>Enter a nickname to join chat</h1>
+ <div ng-show="!chat.showChat" class="entry-screen">
+  <h1>JOIN #CHAT</h1>
+  <label for="nickname">Enter a nickname</label>
   <input type="text" placeholder="/nick" id="nickname" class="text-input nickname" required>
-  <button class="button" ng-click="chat.setNickname()">Enter</button>
+
+  <button class="button" ng-click="chat.createUser()">Enter</button>
 </div>
 
 <!--
@@ -15,7 +17,7 @@
 | Display Requirements: Nickname set to variable user.nickname
 | -->
 
-<div ng-if="chat.nickname">
+<div ng-if="chat.showChat">
   <header id="chatHeader">
     <span class="channel-name">{{chat.activechannel}}</span>
   </header>

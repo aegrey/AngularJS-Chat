@@ -16,9 +16,9 @@
   function ChatService(socketFactory) {
 
     var chatServices = {
-      socket: socket,
+      socket: socket(),
       updateChatCache: updateChatCache,
-      getCache: getCache
+      getCache: getCache,
     };
 
     return chatServices;
@@ -27,11 +27,9 @@
     //connects to socket.io server
     function socket() {
       //put this URL into config file in the future.
-      var socketConn = socketFactory({
+      return socketFactory({
         ioSocket: io.connect('http://localhost:3000')
       });
-
-      return socketConn;
     }
 
     //Chat Cache Functions

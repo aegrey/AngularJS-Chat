@@ -50,7 +50,6 @@
       function watchMessages() {
         //To Do: Add Cache
         scope.$on('socket:message_created', function(event, value) {
-          console.log(value);
           scope.messages.push({ 'nickname': value.user.username, 'message': value.message, 'created': value.created });
         });
 
