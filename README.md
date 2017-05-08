@@ -1,9 +1,9 @@
 # AngularJS Front-End Chat
 
 #### Latest Commit - App Status   
-All required functionality is working, still need to tweak desktop UI (mobile looks well). Local storage for chat/persistant data structure but not functionality - going to store all messages by session. Socket calls for user join/left notifications setup, but not included in the UI yet. 
+All required functionality is working, still need to tweak desktop UI (mobile first design). Session storage for chat/persistant data is working when a channel is entered (I need to put this in a service, it's in the directive and a bit messy right now). User typing endpoint and UI in place. Additional features: Added a session based cookie to remember  username. Socket calls for user join/left notifications set up, but not included in the UI yet. 
    
-**NOTE** I had to change the socket.io server - will address this w/ you Monday. 
+**NOTE** I had to change the socket.io server - will address this Monday. 
    
 ---
 
@@ -32,8 +32,7 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    
 ### Future To-Do   
    -  Comments/JSDoc
-   -  Local storage for channel history
    -  Tweak responsive style for desktop
    -  Add UX animations for chat, channel slide-out (using css transitions)
    -  Update directives to components
-   -  Update structure & UI to be a seperate module for install via Bower
+   -  Update entire app & UI to be a angularjs module, publish on bower and npm.
