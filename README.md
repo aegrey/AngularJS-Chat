@@ -1,25 +1,16 @@
-# Real-Time Javascript Chat - in AngularJS and NodeJS
-
-#### Description
-Real-time javascript chat application built in AngularJS and NodeJS. Allows for multiple chats, user nicknames. Will add full description once this is converted into a module and a better back-end is completed.  
+# Real-Time Javascript Chat
+Built in AngularJS and Node.js  
   
-If you're interested in using this now or contributing, contact me. 
-   
-**NOTE** Server built in socket.io, going to update to PubNub and commit node.js server code for immediate install/workable app.
-   
----
+## Description
+Allows for multiple chats, user nicknames. Will add full description once this is converted into a module and a better back-end is completed.  
   
-### Pre-Release To Do
-   -  Update directives to components
-   -  Add responsiveness for desktop (built mobile-first)
-   -  Put session storage for persistent chat data into a service
-   -  Include user enter/exit notifications in the UI
-   -  Comments/JSDoc & Usage Documentation
-   -  Make into a AngularJS module
-
+If you're interested in using this now or contributing, contact me.  
+    
+Server built in socket.io, going to update to PubNub and commit node.js server code for immediate install/workable app.
+   
 ---  
    
-### Installation
+## Installation
 You'll need npm, bower, and gulp in order to install and run this application.   
 If you don't have node.js installed, download the install at: https://nodejs.org/en/download/   
 
@@ -35,12 +26,24 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    - `gulp lint` - runs jslint
    - `gulp build` - compiles a build for prod
    
-   
-#### Post-Release To Do/Nice to Have  
+---
+  
+## To Do
+  
+#### Pre-Release
+   -  Update directives to components
+   -  Add responsiveness for desktop (built mobile-first)
+   -  Put session storage for persistent chat data into a service
+   -  Include user enter/exit notifications in the UI
+   -  Comments/JSDoc & Usage Documentation
+   -  Make into a AngularJS module
+     
+       
+#### Post-Release
    -  Update UI - more simplistic & customizable
    -  Add UX animations for chat, channel slide-out (using css transitions)
    -  Publish module on bower and npm
-
+  
 ---  
   
 #### Credits
