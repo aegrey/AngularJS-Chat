@@ -8,7 +8,6 @@ If you're interested in using this now or contributing, contact me.
     
 Server built in socket.io, going to update to PubNub and commit node.js server code for immediate install/workable app.
    
----  
    
 ## Installation
 You'll need npm, bower, and gulp in order to install and run this application.   
@@ -26,7 +25,6 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    - `gulp lint` - runs jslint
    - `gulp build` - compiles a build for prod
    
----
   
 ## To Do
   
