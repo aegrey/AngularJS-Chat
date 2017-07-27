@@ -1,7 +1,7 @@
-# Real-Time Chat - in AngularJS and NodeJS
+# Real-Time Javascript Chat - in AngularJS and NodeJS
 
 #### Description
-AngularJS based real-time chat application. Allows for multiple chats, user nicknames. Will fully describe once this is converted into a module and a better back-end is completed.  
+Real-time javascript chat application built in AngularJS and NodeJS. Allows for multiple chats, user nicknames. Will add full description once this is converted into a module and a better back-end is completed.  
   
 If you're interested in using this now or contributing, contact me. 
    
@@ -40,3 +40,21 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    -  Update UI - more simplistic & customizable
    -  Add UX animations for chat, channel slide-out (using css transitions)
    -  Publish module on bower and npm
+
+---  
+  
+#### Credits
+   -  Developer - AE Grey @aegrey   
+   -  Contributor -
+ 
+#### License
+ 
+The MIT License (MIT)
+
+Copyright (c) 2015 Chris Kibble
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
