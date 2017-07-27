@@ -1,17 +1,23 @@
-# AngularJS Front-End Chat
+# Real-Time Chat - in AngularJS and NodeJS
 
-#### Latest Commit - App Status   
-All required functionality is working, still need to tweak desktop UI (mobile first design). Session storage for chat/persistant data is working when a channel is entered (I need to put this in a service, it's in the directive and a bit messy right now). User typing endpoint and UI in place. Additional features: Added a session based cookie to remember  username. Socket calls for user join/left notifications set up, but not included in the UI yet. 
+#### Description
+AngularJS based real-time chat application. Allows for multiple chats, user nicknames. Will fully describe once this is converted into a module and a better back-end is completed.  
+  
+If you're interested in using this now or contributing, contact me. 
    
-**NOTE** I had to change the socket.io server - will address this Monday. 
+**NOTE** Server built in socket.io, going to update to PubNub and commit node.js server code for immediate install/workable app.
    
 ---
+  
+### Pre-Release To Do
+   -  Update directives to components
+   -  Add responsiveness for desktop (built mobile-first)
+   -  Put session storage for persistent chat data into a service
+   -  Include user enter/exit notifications in the UI
+   -  Comments/JSDoc & Usage Documentation
+   -  Make into a AngularJS module
 
-### Notes on App
-**Structure of App** I created this as a standalone application (with a folder structure as if chat was a module/section of the app) as it was more efficent for the initial demo build. I will eventually make this into a AngularJS module (and change the design for this purpose).   
-   
-**Why Gulp** I used Gulp instead of Grunt for this project as it's a much quicker setup. I'd used Grunt for a long time, but switched to Gulp about a year ago and have used it for all my personal projects. I love its ease of use and clean formatting. If you haven't used it yet, you should check it out! It's become a very popular build tool.
-   
+---  
    
 ### Installation
 You'll need npm, bower, and gulp in order to install and run this application.   
@@ -30,9 +36,7 @@ Once that completes, you'll be ready to run the app. Here's the gulp commands yo
    - `gulp build` - compiles a build for prod
    
    
-### Future To-Do   
-   -  Comments/JSDoc
-   -  Tweak responsive style for desktop
+#### Post-Release To Do/Nice to Have  
+   -  Update UI - more simplistic & customizable
    -  Add UX animations for chat, channel slide-out (using css transitions)
-   -  Update directives to components
-   -  Update entire app & UI to be a angularjs module, publish on bower and npm.
+   -  Publish module on bower and npm
