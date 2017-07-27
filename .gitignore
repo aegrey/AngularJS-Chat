@@ -1,29 +1,23 @@
 # Logs
-logs
+
 *.log
-npm-debug.log*
 .DS_Store
 
 # Runtime data
-pids
+
 *.pid
 *.seed
 *.pid.lock
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components/
 
 #Build files
 public/
 
 # Dependency directories
 node_modules/
-jspm_packages/
+bower_components/
 
-# Optional npm cache directory
+# npm cache directory
 .npm
 
 # dotenv environment variables file
@@ -32,5 +26,5 @@ jspm_packages/
 # Server File
 server.js
 
-#design file
-chat.psd
+# Tests
+tests/
