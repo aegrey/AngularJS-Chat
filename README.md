@@ -4,9 +4,7 @@ Built in AngularJS and Node.js
 ## Description
 Allows for multiple chats, user nicknames. Will add full description once this is converted into a module and a better back-end is completed.  
   
-Currently, this app isn't usable as it was built on a socket.io node server that's proprietary.  
-    
-I'm actively creating a custom node.js server using PubNub for real-time monitoring and updating this application based on the new server, after which this application will be functional.
+Currently, this app was built on a socket.io node server, it's being setup using serverless and server will be added once complete.
    
    
 ## Installation
